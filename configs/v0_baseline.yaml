@@ -1,0 +1,27 @@
+detector:
+  model: rfdetr_base
+  weights: coco_pretrained
+  confidence_threshold: 0.5
+  nms_threshold: 0.45
+  device: cuda
+
+tracker:
+  method: bytetrack
+  space: pixel
+  track_thresh: 0.6
+  track_buffer: 30
+  match_thresh: 0.8
+
+eval:
+  dataset: vip_htd
+  metrics: [HOTA, IDF1, MOTA, IDsw, Frag, AssA, DetA]
+  split: test
+
+homography:
+  enabled: false
+
+jersey_ocr:
+  enabled: false
+
+identity:
+  mode: track_id_only
